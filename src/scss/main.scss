@@ -1,0 +1,90 @@
+body {
+    font-family: sans-serif;
+}
+
+.chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    width: 50vh;
+
+}
+
+.chart__pie {
+    width: 50vh;
+    height: 50vh;
+
+    --chart-inactive-slice-size: 0.97;
+    --chart-leading-color: #86218B;
+    --chart-label-position: 0.75;
+}
+
+.chart__label {
+    text-anchor: middle;
+    alignment-baseline: central;
+    pointer-events: none;
+    fill: #fff;
+    font-size: 4px; // Note that it's relative to the viewbox size (100x100)
+}
+
+.chart__slice {
+    transition: all 150ms cubic-bezier(.55,1.56,.51,1.65);
+    stroke: #fff;
+    stroke-width: 0.25;
+
+    &.is-dimmed {
+        filter: url(#dim);
+    }
+}
+
+.chart__details {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: yellow;
+}
+
+.tooltip {
+    position: absolute;
+    display: flex;
+    opacity: 0;
+    transition: all 150ms;
+    background-color: rgba(0, 0, 0, .85);
+    color: #fff;
+    border-radius: .25em;
+    padding: .25em;
+
+    &.is-active {
+        opacity: 1;
+    }
+
+    &__name {
+        order: 1;
+        margin-right: 1em;
+    }
+
+    &__description-item {
+        margin: 0;
+    }
+
+    &__color {
+        order: 0;
+        width: 1em;
+        height: 1em;
+        border-radius: .5em;
+        margin-right: .5em;
+    }
+
+    &__absolute-value {
+        order: 3;
+    }
+
+    &__percent-value {
+        order: 2;
+        margin-right: 1em;
+    }
+
+}
